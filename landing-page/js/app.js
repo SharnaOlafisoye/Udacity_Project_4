@@ -2,14 +2,17 @@
  * Comments should be present at the beginning of each procedure and class.
  * Great to have comments before crucial code sections within the procedure.
 */
-
+document.addEventListener("DOMContentLoaded", function() {  
+goToTop()
+});
 /**
  * Define Global Variables
  * 
 */
-const sections = document.querySelectorAll('section'); // removed spread operator since NodeList can be iterated
-const menuLinks = document.getElementsByClassName('menu_link'); 
-const numberOfListItems = sections.length; 
+const sections = document.querySelectorAll('section'); 
+const container = document.querySelectorAll('.landing_container');
+const navBarList = document.getElementById('navBar_list'); 
+const ul = document.getElementsById('.ul'); 
 
 
 /**
@@ -27,11 +30,48 @@ const numberOfListItems = sections.length;
 */
 
 // build the nav
-document.addEventListener("DOMContentLoaded", function() {  
-  for (let i = 0; i < menuLinks.length; i++) {
-    menuLinks[i].remove();
-    menuLinks.appendChild(document.createElement('li'));
-  }});
+ul.section.appendChild(section1);
+ul.section.appendChild(section2);
+ul.section.appendChild(section3); 
+ul.section.appendChild(section4);
+
+// build the nav
+const section = [
+  {title: 'Section1', id: 'Section 1'},
+   {title: 'Section2', id: 'Section 2'},} 
+   {title: 'Section3', id: 'Section 3'}, }
+   {title: 'Section4', id: 'Section 4'} }
+  ];
+document.querySelector("landing_container").insertAdjacentHTML("beforeend",section);
+function build_navBar(section) {
+  const listItem =document.createElement('li');
+  const navBarItem = document.createElement('a');
+  navBarItem.classList.add('navBar_item');
+  navBarItem.textContent = section.title;
+  navBarItem.href = `#${section.id} `class="menu_link">$(section.dataset.nav)</a>navBar.insertAdjacentHTML(beforeend),listItem;
+  listItem.appendChild(navBarItem);
+  navBarList.appendChild(listItem);
+  return listItem;
+}
+
+function buildNavBar() {
+  const navBarList = document.createElement('ul');
+  navBarList.classList.add('navBar_list');
+  sections.forEach(section => {
+    const navBarItem = buildNavBarItem(section);
+    navBarList.appendChild(navBarItem);
+  });
+  return navBarList;
+}
+// Attaches the navigation bar to the DOM when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+  const navBar = buildNavBar();
+  const navBarContainer = document.querySelector('.navBar_container');
+  navBarContainer.appendChild(navBar);
+});
+  })
+}
+const title = section.data-navBarList.title;
   
   // Add menu links
   for (let i = 0; i < numberOfListItems; i++) {
@@ -43,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function() {
     menuLink.addEventListener("click", (event) => {
       event.preventDefault();
       const section = document.getElementById(event.target.innerHTML);
-    }
+    });
 
   sections.forEach(function (section, index) {
     const menuLink = document.createElement('li');
@@ -56,23 +96,46 @@ function scrolly() {
   scrollTarget.scrollIntoView({behavior:'smooth'});
 }
 //add an even listener to the link so that it calls the scrolly function 
-menuLinks.addEventListener('click',(event)=> {
-  event.preventDefault();
-  scrolly();
+const menuLinks = document.querySelectorAll('.menu_links');
+menuLinks.forEach(link => {
+  link.addEventListener('click', event => {
+    event.preventDefault();
+    scrolly();
+  });
 });
-});
+
+function highlight() {
+  const menuLinks = document.querySelectorAll('.menu_links');
+  menuLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  const currentLink = document.getElementById(this.innerHTML);
+  currentLink.classList.add('active');
+}
+}
   // Add menu links
   for (let i = 0; i < numberOfListItems; i++) {
     const menuLink = document.createElement('li');
-    menuLink.classList.add('menu_)
+    menuLink.classList.add('menuLink');
 
 
 
 // Loop through each section and update the corresponding menu link
-const navBar = document.querySelector("#navBar");
+function setActiveSection() {("#navBar");
 for (let i = 0; i < sections.length; i++) {
   const section = sections[i];
-  const menuLink = document.createElement("a");
+  const menuLink = document.querySelector(`a[href="#${section.id}"]`);
+  
+  const rect = section.getBoundingClientRect();
+  const isInView = rect.top >=0 && rect.top <= window.innerHeight * 0.5;
+  if (isInView) {
+    menuLink.classList.add('active');
+  } else {
+    menuLink.classList.remove('active');
+  }
+}
+}
+window.addEventListener('scroll'setActiveSection);
   // Set the link's href attribute to "#sectionX", where X is the section's index + 1
   menuLink.setAttribute("href", `#section${i + 1}`);
   // Set the link's text content to "Section X", where X is the section's index + 1
@@ -80,7 +143,7 @@ for (let i = 0; i < sections.length; i++) {
   navBar.appendChild(menuLink);
 }
 
-const navBarList = document.getElementById('navBar_list');
+
 
 // Define an array of navigation items
 const navItems = [
@@ -113,10 +176,10 @@ li.addEventListener('click', (e) => {
 
 // check if the navigation item's section is in the viewport and add or remove the active class accordingly
 window.addEventListener('scroll', () => {
+  const inViewport = rect.top <= rect.top <= window.innerHeight && rect.bottom >= 0;
   for(let i=0; i <sections.length; i++) {;  
     const section = sections[i];
   const rect = section.getBoundingClientRect();
-  const inViewport = rect.top <= rect.top <= window.innerHeight && rect.bottom >= 0;
   const li = navBarList.querySelector(`[data-nav="${section.id}"]`);
   if (inViewport) {
     section.classList.add('active');
@@ -131,8 +194,12 @@ window.addEventListener('scroll', () => {
 
 // Define a function to handle the 'scroll' event
 function handleScroll() {
-  // Loop through each section and check if it is in the viewport
-  
+  const sections = document.querySelectorAll('section');
+  for (let i = 0; i < sections.length; i++) {
+    const section = sections[i];
+    const li = document.querySelector(`li[data-nav]="${section.id}"]`);
+
+    const inViewport = isElementInViewport(section);
     // Add or remove the 'active' class based on whether the section is in the viewport
     if (inViewport) {
       li.classList.add('active');
