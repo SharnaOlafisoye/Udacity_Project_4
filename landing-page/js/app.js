@@ -48,7 +48,7 @@ function build_navBar(section) {
   const navBarItem = document.createElement('a');
   navBarItem.classList.add('navBar_item');
   navBarItem.textContent = section.title;
-  navBarItem.href = `#${section.id} `class="menu_link">$(section.dataset.nav)</a>navBar.insertAdjacentHTML(beforeend),listItem;
+  navBarItem.href = `#${section.id} `class = "menu_link">$(section.dataset.nav)</a>navBar.insertAdjacentHTML(beforeend),listItem;
   listItem.appendChild(navBarItem);
   navBarList.appendChild(listItem);
   return listItem;
