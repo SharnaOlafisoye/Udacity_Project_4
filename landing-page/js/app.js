@@ -38,9 +38,9 @@ ul.section.appendChild(section4);
 // build the nav
 const section = [
   {title: 'Section1', id: 'Section 1'},
-   {title: 'Section2', id: 'Section 2'},} 
-   {title: 'Section3', id: 'Section 3'}, }
-   {title: 'Section4', id: 'Section 4'} }
+   {title: 'Section2', id: 'Section 2'}, 
+   {title: 'Section3', id: 'Section 3'}, 
+   {title: 'Section4', id: 'Section 4'} 
   ];
 document.querySelector("landing_container").insertAdjacentHTML("beforeend",section);
 function build_navBar(section) {
