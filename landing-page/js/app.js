@@ -14,10 +14,14 @@ const menuBar = document.getElementById("navbar_menu");
 // Build the nav by creating and appending elements to the navigation menu
 sections.forEach((section) => {
   const sectionLi = document.createElement("li");
-  sectionLi.innerText = section.dataset.nav;
   navBarList.appendChild(sectionLi);
+  const aEl = document.createElement("a");
+  aEl.innerText = section.dataset.nav;
+  aEl.href = `#${section.id}`;
+  sectionLi.appendChild(aEl);
 });
 /**
+ *
  * End Global Variables
  * Start Helper Functions
  *
@@ -30,14 +34,6 @@ sections.forEach((section) => {
  * Begin Main Functions
  *
  */
-//function that goes to the top of the document
-function goToTop() {
-  Button.addEventListener("click", () => {
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-  });
-}
-
 
 
 // Add 'active' class to menu link and corresponding section when near top of viewport
@@ -47,50 +43,34 @@ function setActiveSection() {
   sections.forEach((section) => {
     const sectionTop = section.offsetTop;
     const sectionHeight = section.clientHeight;
+    const navbar_menu = document.querySelector('a[href="$(section.getAttribute("id")}"]');
 
-    if (
-      scrollPosition >= sectionTop - sectionHeight * 0.25 &&
-      scrollPosition < sectionTop + sectionHeight - sectionHeight * 0.25
-    ) {
-      const navbar_menu = document.querySelector(
-        `a[href="#${section.getAttribute("id")}"]`
-      );
-
-      if (!section.classList.contains("active")) {
-        section.classList.add("active");
-      }
-      if (navbar_menu && !navbar_menu.classList.contains("active")) {
-        navbar_menu.classList.add("active");
-      }
-    } else {
-      const navbar_menu = document.querySelector(
-        `a[href="#${section.getAttribute("id")}"]`
-      );
-      console.log(navbar_menu);
-
-      if (section.classList.contains("active")) {
-        section.classList.remove("active");
-      }
-      if (navbar_menu && navbar_menu.classList.contains("active")) {
-        navbar_menu.classList.remove("active");
-      }
-    }
-  });
+   // check if section is near top of viewport
+   if (scrollPosition >= sectionTop - sectionHeight * 0.25 && scrollPosition < sectionTop + sectionHeight - sectionHeight * 0.25) {
+    section.classList.toggle("active", true);
+    navbar_menu.classList.toggle("active", true);
+  } else {
+    section.classList.toggle("active", false);
+    navbar_menu.classList.toggle("active", false);
+  }
+});
 }
+      
 
-window.addEventListener("scroll", setActiveSection);
-
+      
+     window.addEventListener("scroll", setActiveSection);
 
 //loop through the sections and create anchor elements for each section
 sections.forEach((section) => {
-  const navItem = document.createElement('a');  
-  navItem.setAttribute('href', `#${section.id}`);
+  const navItem = document.createElement("a");
+  navItem.setAttribute("href", `#${section.id}`);
   navItem.textContent = section.dataset.nav;
 
-  navbar_menu.appendChild(navItem);
-});
+  menuBar.appendChild(navItem);
+  console.log(menuBar);
+
 // Use IntersectionObserver to add or remove the 'active' class
-// Define a function to handle the changes observed by the IntersectionObserver
+//Register a callback to be called when each section enters and exits the viewport
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -122,10 +102,6 @@ sections.forEach((section) => {
   observer.observe(section);
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  // code to run when the DOM is loaded
-});
-
 /**
  * End Main Functions
  * Begin Events
@@ -141,11 +117,9 @@ navLinks.forEach((link) => {
   });
 });
 
-window.addEventListener('scroll',() =>{
+window.addEventListener("scroll", () => {
   const scrolled = window.scrollY;
-  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const maxScrollPosition =
+    document.documentElement.scrollHeight - window.innerHeight;
   console.log(scrolled);
-  
-  function scrollToSection(section) {
-    section.scrollIntoView();
-  }
+});
