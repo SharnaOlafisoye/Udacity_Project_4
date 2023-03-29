@@ -43,7 +43,8 @@ function setActiveSection() {
   sections.forEach((section) => {
     const sectionTop = section.offsetTop;
     const sectionHeight = section.clientHeight;
-    const navbar_menu = document.querySelector('a[href="$(section.getAttribute("id")}"]');
+    const navbar_menu = document.querySelector(`a[href="#${section.getAttribute("id")}"]`);
+
 
    // check if section is near top of viewport
    if (scrollPosition >= sectionTop - sectionHeight * 0.25 && scrollPosition < sectionTop + sectionHeight - sectionHeight * 0.25) {
