@@ -9,7 +9,7 @@
  */
 const sections = document.querySelectorAll("section");
 const navBarList = document.getElementById("navbar_list");
-const menuBar = document.querySelector('.navbar_menu');
+const menuBar = document.querySelector(".navbar_menu");
 
 console.log(navBarList);
 console.log(menuBar);
@@ -41,25 +41,23 @@ sections.forEach((section) => {
  *
  */
 
-
-
 // Add active class to menu link and corresponding section when near top of viewport
 function setActiveSection() {
   sections.forEach((section) => {
     const sectionTop = section.offsetTop - 50;
     const sectionHeight = section.offsetHeight;
     const navLink = document.querySelector(`a[href="#${section.id}"]`);
-    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-      section.classList.add('your-active-class');
-      navLink.classList.add('your-active-class');
+    if (
+      window.scrollY >= sectionTop &&
+      window.scrollY < sectionTop + sectionHeight
+    ) {
+      section.classList.add("your-active-class");
+      navLink.classList.add("your-active-class");
     } else {
-      section.classList.remove('your-active-class');
-      navLink.classList.remove('your-active-class');
+      section.classList.remove("your-active-class");
+      navLink.classList.remove("your-active-class");
     }
   });
 }
 
-window.addEventListener('scroll', setActiveSection);
-
-
-
+window.addEventListener("scroll", setActiveSection);
