@@ -11,8 +11,6 @@ const sections = document.querySelectorAll("section");
 const navBarList = document.getElementById("navbar_list");
 const menuBar = document.querySelector(".navbar_menu");
 
-console.log(navBarList);
-console.log(menuBar);
 
 // Build the nav by creating and appending elements to the navigation menu
 
