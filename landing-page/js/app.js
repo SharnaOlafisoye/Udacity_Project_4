@@ -10,6 +10,8 @@
 const sections = document.querySelectorAll("section");
 const navBarList = document.getElementById("navbar_list");
 const menuBar = document.getElementById("navbar_menu");
+console.log(navBarList);
+console.log(menuBar);
 
 // Build the nav by creating and appending elements to the navigation menu
 sections.forEach((section) => {
@@ -48,11 +50,11 @@ function setActiveSection() {
 
    // check if section is near top of viewport
    if (scrollPosition >= sectionTop - sectionHeight * 0.25 && scrollPosition < sectionTop + sectionHeight - sectionHeight * 0.25) {
-    section.classList.toggle("active", true);
-    navbar_menu.classList.toggle("active", true);
+    section.classList.toggle("your-active-class", true);
+    navbar_menu.classList.toggle("your-active-class", true);
   } else {
-    section.classList.toggle("active", false);
-    navbar_menu.classList.toggle("active", false);
+    section.classList.toggle("your-active-class", false);
+    navbar_menu.classList.toggle("your-active-class", false);
   }
 });
 }
@@ -80,18 +82,18 @@ const observer = new IntersectionObserver(
       );
       const element = document.querySelector(".some-selector");
       if (entry.isIntersecting) {
-        entry.target.classList.add("active");
+        entry.target.classList.add("your-active-class");
         if (element !== null) {
-          element.classList.add("some-class");
+          element.classList.add("your-active-class");
         }
-        navbar_menu.classList.add("active");
+        navbar_menu.classList.add("your-active-class");
       } else {
-        entry.target.classList.remove("active");
+        entry.target.classList.remove("your-active-class");
         if (navbar_menu) {
-          navbar_menu.classList.remove("active");
+          navbar_menu.classList.remove("your-active-class");
         }
         if (element !== null) {
-          element.classList.remove("some-class");
+          element.classList.remove("your-active-class");
         }
       }
     });
