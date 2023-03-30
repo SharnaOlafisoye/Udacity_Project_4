@@ -36,115 +36,33 @@ sections.forEach((section) => {
  * Begin Main Functions
  *
  */
+const sections = document.querySelectorAll('section');
+const navBarList = document.getElementById('navbar_list');
 
-
-// Add 'active' class to menu link and corresponding section when near top of viewport
-function setActiveSection() {
-  const scrollPosition = window.pageYOffset;
-  // loop through all sections
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-    const navbar_menu = document.querySelector(`a[href="#${section.getAttribute("id")}"]`);
-
-
-   // check if section is near top of viewport
-   if (scrollPosition >= sectionTop - sectionHeight * 0.25 && scrollPosition < sectionTop + sectionHeight - sectionHeight * 0.25) {
-    section.classList.toggle("your-active-class", true);
-    navbar_menu.classList.toggle("your-active-class", true);
-  } else {
-    section.classList.toggle("your-active-class", false);
-    navbar_menu.classList.toggle("your-active-class", false);
-    console.log("your-active-class");
-  }
-});
-}
-      
-
-      
-     window.addEventListener("scroll", setActiveSection);
-
-//loop through the sections and create anchor elements for each section
+// Build the nav by creating and appending elements to the navigation menu
 sections.forEach((section) => {
-  const navItem = document.createElement("a");
-  navItem.setAttribute("href", `#${section.id}`);
-  navItem.textContent = section.dataset.nav;
+  const navItem = document.createElement('li');
+  navItem.innerHTML = `<a href="#${section.id}">${section.dataset.nav}</a>`;
+  navBarList.appendChild(navItem);
+});
 
-  menuBar.appendChild(navItem);
-  console.log(menuBar);
-
-  // This function updates the active class for sections based on their position in the viewport
-function updateActiveSection() {
-  // Get all the section elements on the page
-  const sections = document.querySelectorAll('section');
-
-  // Iterate through each section element
-  sections.forEach(section => {
-    // Get the distance between the top of the section and the top of the viewport, minus 50 pixels
-    const elementOffset = section.getBoundingClientRect().top - 50;
-
-    // If the section is within 150 pixels of the top of the viewport, add the active class
-    if (elementOffset < 150 && elementOffset >= -150) {
+// Add active class to menu link and corresponding section when near top of viewport
+function setActiveSection() {
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop - 50;
+    const sectionHeight = section.offsetHeight;
+    const navLink = document.querySelector(`a[href="#${section.id}"]`);
+    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
       section.classList.add('your-active-class');
+      navLink.classList.add('your-active-class');
     } else {
-      // Otherwise, remove the active class
       section.classList.remove('your-active-class');
+      navLink.classList.remove('your-active-class');
     }
   });
 }
 
+window.addEventListener('scroll', setActiveSection);
 
-// Use IntersectionObserver to add or remove the 'active' class
-//Register a callback to be called when each section enters and exits the viewport
-// const observer = new IntersectionObserver(
-//   (entries) => {
-//     entries.forEach((entry) => {
-//       const navbar_menu = document.querySelector(
-//         `a[href="#${entry.target.id}"]`
-//       );
-//       const element = document.querySelector(".some-selector");
-//       if (entry.isIntersecting) {
-//         entry.target.classList.add("your-active-class");
-//         if (element !== null) {
-//           element.classList.add("your-active-class");
-//         }
-//         navbar_menu.classList.add("your-active-class");
-//       } else {
-//         entry.target.classList.remove("your-active-class");
-//         if (navbar_menu) {
-//           navbar_menu.classList.remove("your-active-class");
-//         }
-//         if (element !== null) {
-//           element.classList.remove("your-active-class");
-//         }
-//       }
-//     });
-//   },
-//   { threshold: 0.5 }
-// );
 
-// sections.forEach((section) => {
-//   observer.observe(section);
-// });
 
-/**
- * End Main Functions
- * Begin Events
- *
- */
-const navLinks = document.querySelectorAll("nav a");
-
-navLinks.forEach((link) => {
-  link.addEventListener("click", (event) => {
-    event.preventDefault(); //prevent links from scrolling to target
-    const section = document.querySelector(link.hash);
-    section.scrollIntoView({ behavior: "smooth" }); //when link clicked scrolls into target with smooth behavior
-  });
-});
-
-window.addEventListener("scroll", () => {
-  const scrolled = window.scrollY;
-  const maxScrollPosition =
-    document.documentElement.scrollHeight - window.innerHeight;
-  console.log(scrolled);
-});
