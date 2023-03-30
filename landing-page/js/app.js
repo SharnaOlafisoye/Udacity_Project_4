@@ -9,11 +9,15 @@
  */
 const sections = document.querySelectorAll("section");
 const navBarList = document.getElementById("navbar_list");
-const menuBar = document.getElementById("navbar_menu");
+const menuBar = document.querySelector('.navbar_menu');
+
 console.log(navBarList);
 console.log(menuBar);
 
 // Build the nav by creating and appending elements to the navigation menu
+
+const sectionLi = document.createElement("li");
+
 sections.forEach((section) => {
   const sectionLi = document.createElement("li");
   navBarList.appendChild(sectionLi);
@@ -36,15 +40,8 @@ sections.forEach((section) => {
  * Begin Main Functions
  *
  */
-const sections = document.querySelectorAll('section');
-const navBarList = document.getElementById('navbar_list');
 
-// Build the nav by creating and appending elements to the navigation menu
-sections.forEach((section) => {
-  const navItem = document.createElement('li');
-  navItem.innerHTML = `<a href="#${section.id}">${section.dataset.nav}</a>`;
-  navBarList.appendChild(navItem);
-});
+
 
 // Add active class to menu link and corresponding section when near top of viewport
 function setActiveSection() {
