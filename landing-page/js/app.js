@@ -40,8 +40,12 @@ sections.forEach((section) => {
  */
 
 // Add active class to menu link and corresponding section when near top of viewport
+
+//prevent the default behavior
+
 function setActiveSection() {
   sections.forEach((section) => {
+    const sectionRect = section.getBoundingClientRect();
     const sectionTop = section.offsetTop - 50;
     const sectionHeight = section.offsetHeight;
     const navLink = document.querySelector(`a[href="#${section.id}"]`);
