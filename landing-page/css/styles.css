@@ -147,6 +147,18 @@ section:nth-of-type(even) .landing__container {
     text-align: right; 
 }
 
+@media only screen and (min-width: 48em){
+    .navbar__menu {
+        display: flex;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center; 
+    }
+
+}
+
 /* Background Circles */
 /* Note that background circles are created with psuedo elements before and after */
 /* Circles appear to be random do to use of :nth-of-type psuedo class */
