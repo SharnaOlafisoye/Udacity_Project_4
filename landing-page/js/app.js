@@ -22,6 +22,7 @@ sections.forEach((section) => {
   const aEl = document.createElement("a");
   aEl.innerText = section.dataset.nav;
   aEl.href = `#${section.id}`;
+  aEl.classList.add(".menu__link");
   sectionLi.appendChild(aEl);
 });
 /**
@@ -41,7 +42,7 @@ sections.forEach((section) => {
 
 // Add active class to menu link and corresponding section when near top of viewport
 
-//prevent the default behavior
+
 
 function setActiveSection() {
   sections.forEach((section) => {
@@ -49,17 +50,20 @@ function setActiveSection() {
     const sectionTop = section.offsetTop - 50;
     const sectionHeight = section.offsetHeight;
     const navLink = document.querySelector(`a[href="#${section.id}"]`);
+    console.log('navLink:',navLink);
     if (
       window.scrollY >= sectionTop &&
       window.scrollY < sectionTop + sectionHeight
     ) {
       section.classList.add("your-active-class");
-      navLink.classList.add("your-active-class");
+      navLink.classList.add("active");
     } else {
       section.classList.remove("your-active-class");
-      navLink.classList.remove("your-active-class");
+      navLink.classList.remove("active");
     }
   });
 }
+
+
 
 window.addEventListener("scroll", setActiveSection);
