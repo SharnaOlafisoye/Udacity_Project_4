@@ -11,7 +11,22 @@ const sections = document.querySelectorAll("section");
 const navBarList = document.getElementById("navbar_list");
 const menuBar = document.querySelector(".navbar_menu");
 
+const pageHeader = document.querySelector(".page_header");
+//Apply styling to the page header
+pageHeader.classList.add(".page_header");
+pageHeader.style.background = "#fff";
+pageHeader.style.position = "fixed";
+pageHeader.style.top = "0";
+pageHeader.style.width = "100%";
+pageHeader.style.zIndex = "5";
 
+//Query for navigation bar list
+const menuBarList = document.querySelectorAll("#navbar__list");
+// Add menu__link class to all the links
+const navBarLinks = navBarList.querySelectorAll("a");
+navBarLinks.forEach((link) => {
+  link.classList.add("menu__link");
+});
 // Build the nav by creating and appending elements to the navigation menu
 
 const sectionLi = document.createElement("li");
@@ -67,3 +82,4 @@ function setActiveSection() {
 
 
 window.addEventListener("scroll", setActiveSection);
+console.log(scroll.target);
