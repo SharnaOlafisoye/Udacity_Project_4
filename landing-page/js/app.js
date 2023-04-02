@@ -18,15 +18,15 @@ pageHeader.style.background = "#fff";
 pageHeader.style.position = "fixed";
 pageHeader.style.top = "0";
 pageHeader.style.width = "100%";
-pageHeader.style.zIndex = "5";
+pageHeader.style.zIndex = "6";
 
 //Query for navigation bar list
 const menuBarList = document.querySelectorAll("#navbar__list");
 // Add menu__link class to all the links
-const navBarLinks = navBarList.querySelectorAll("a");
-navBarLinks.forEach((link) => {
-  link.classList.add("menu__link");
-});
+// const navBarLinks = navBarList.querySelectorAll("a");
+// navBarLinks.forEach((link) => {
+//   link.classList.add("menu__link");
+// });
 // Build the nav by creating and appending elements to the navigation menu
 
 const sectionLi = document.createElement("li");
@@ -83,3 +83,19 @@ function setActiveSection() {
 
 window.addEventListener("scroll", setActiveSection);
 console.log(scroll.target);
+
+// Select the navbar and create a new button element
+const navbar = document.querySelector('#navbar');
+const toggleButton = document.createElement('button');
+
+// Add text and classes to the button
+toggleButton.textContent = 'Menu';
+toggleButton.classList.add('navbar-toggle', 'collapsed');
+
+// Add the button to the navbar
+navbar.appendChild(toggleButton);
+
+// Add a click event listener to the button that toggles the navbar
+toggleButton.addEventListener('click', () => {
+  navbar.classList.toggle('show-nav');
+});

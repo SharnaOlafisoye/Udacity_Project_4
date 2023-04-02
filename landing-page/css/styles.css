@@ -284,6 +284,13 @@ section.your-active-class .landing__container::after {
     margin: 1em;
   }
 
+  @media only screen and (max-width: 35em) {
+    h1 {
+      font-size: 4em;
+      margin: 2em 4rem 1em;
+    }
+  }
+
   /* Modify navbar to be a hamburger menu */
   .navbar__menu {
     flex-direction: column;
