@@ -290,6 +290,25 @@ section.your-active-class .landing__container::after {
       margin: 2em 4rem 1em;
     }
   }
+
+  /* Modify navbar to be a hamburger menu */
+  .navbar__menu {
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100%;
+    width: 50%;
+    z-index: 10;
+    background-color: #fff;
+    padding: 1rem;
+    transition: left 0.3s ease-in-out;
+  }
+
+  /* Show the navbar when hamburger menu is clicked */
+  .navbar__menu.show {
+    left: 0;
+  }
 /* ---- Hamburger Menu Rules ---- */
 #navbar_list ul {
   display: none;
@@ -356,25 +375,6 @@ body {
   font-family: "Merriweather", serif;
   color: #fff;
 }
-
-  /* Modify navbar to be a hamburger menu */
-  .navbar__menu {
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    left: -100%;
-    height: 100%;
-    width: 50%;
-    z-index: 10;
-    background-color: #fff;
-    padding: 1rem;
-    transition: left 0.3s ease-in-out;
-  }
-
-  /* Show the navbar when hamburger menu is clicked */
-  .navbar__menu.show {
-    left: 0;
-  }
 
   /* Hide the navbar list when hamburger menu is displayed */
   #navbar_list {
