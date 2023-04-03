@@ -69,18 +69,6 @@ function setActiveSection() {
 
 window.addEventListener("scroll", setActiveSection);
 
-// Select the navbar and create a new button element
-const navbar = document.querySelector('#navbar_list');
-const toggleButton = document.createElement('button');
 
-// Add text and classes to the button
-toggleButton.textContent = 'Menu';
-toggleButton.classList.add('navbar-toggle', 'collapsed');
 
-// Add the button to the navbar
-navbar.insertBefore(toggleButton, navbar.firstChild);
 
-// Add a click event listener to the button that toggles the navbar
-toggleButton.addEventListener('click', () => {
-  navbar.classList.toggle('show-nav');
-});

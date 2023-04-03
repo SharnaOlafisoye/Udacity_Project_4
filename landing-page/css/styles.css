@@ -291,34 +291,6 @@ section.your-active-class .landing__container::after {
     }
   }
 
-  /* Modify navbar to be a hamburger menu */
-  .navbar__menu {
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    left: -100%;
-    height: 100%;
-    width: 50%;
-    z-index: 10;
-    background-color: #fff;
-    padding: 1rem;
-    transition: left 0.3s ease-in-out;
-  }
-
-  /* Show the navbar when hamburger menu is clicked */
-  .navbar__menu.show {
-    left: 0;
-  }
-/* ---- Hamburger Menu Rules ---- */
-#navbar_list ul {
-  display: none;
-  flex-direction: column;
-  position: absolute;
-  top: 70px;
-  width: 100%;
-  background-color: #000;
-  padding: 10px;
-}
 
 #navbar_list ul.show {
   display: flex;
@@ -338,7 +310,7 @@ section.your-active-class .landing__container::after {
   }
 
   #navbar_list ul li {
-    padding: 0 10px;
+    padding: 0 5px;
   }
 }
 
@@ -375,11 +347,6 @@ body {
   font-family: "Merriweather", serif;
   color: #fff;
 }
-
-  /* Hide the navbar list when hamburger menu is displayed */
-  #navbar_list {
-    display: none;
-  }
 
   /* Adjust padding for navbar menu links */
   .navbar_menu li {
@@ -424,13 +391,44 @@ body {
     font-size: 3em;
   }
 
-  /* Adjust padding for main */
-  main {
-    margin: 10vh 1em 10vh;
-  }
-
   /* Adjust padding for footer */
   .page__footer {
     padding: 3em;
   }
 }
+ /* Adjust padding for footer */
+ .page__footer {
+  padding: 2em;
+}
+ /* Media query for small devices */
+ @media only screen and (max-width: 600px) {
+  .navbar__menu {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    flex-direction: row;
+    justify-content: wrap;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: transparent;
+  }
+  
+  .navbar__menu li {
+    margin: 0 0.5rem;
+  }
+  .navbar__menu a {
+    font-size: 0.9rem;
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #333;
+  }
+  
+  .navbar__menu a:hover {
+    background-color: #000;
+  }
+}
+
+
+
+
