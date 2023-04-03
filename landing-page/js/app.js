@@ -21,7 +21,7 @@ pageHeader.style.width = "100%";
 pageHeader.style.zIndex = "6";
 
 //Query for navigation bar list
-const menuBarList = document.querySelectorAll("#navbar__list");
+const menuBarList = document.querySelectorAll("#navbar_list");
 // Add menu__link class to all the links
 // const navBarLinks = navBarList.querySelectorAll("a");
 // navBarLinks.forEach((link) => {

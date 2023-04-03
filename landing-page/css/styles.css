@@ -290,6 +290,72 @@ section.your-active-class .landing__container::after {
       margin: 2em 4rem 1em;
     }
   }
+/* ---- Hamburger Menu Rules ---- */
+#navbar_list ul {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 70px;
+  width: 100%;
+  background-color: #000;
+  padding: 10px;
+}
+
+#navbar_list ul.show {
+  display: flex;
+}
+
+#navbar_list ul li {
+  padding: 10px 0;
+}
+
+@media only screen and (min-width: 768px) {
+  #navbar_list ul {
+    display: flex;
+    position: static;
+    background-color: transparent;
+    padding: 0;
+    width: auto;
+  }
+
+  #navbar_list ul li {
+    padding: 0 10px;
+  }
+}
+
+#menu-icon {
+  display: inline-block;
+  color: #fff;
+  font-size: 25px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.navbar_menu {
+  display: inline-flex;
+  align-items: center;
+  cursor: context-menu;
+  padding: 0 5%;
+}
+
+.navbar_menu:hover {
+  background: #000;
+  color: #fff;
+  transition: ease 0.3s all;
+}
+
+/* ---- Base Rules ---- */
+body {
+  background: rgb(136, 203, 171);
+  background: linear-gradient(
+    0deg,
+    rgba(136, 203, 171, 1) 0%,
+    rgba(0, 13, 60, 1) 100%
+  );
+  margin: 0;
+  font-family: "Merriweather", serif;
+  color: #fff;
+}
 
   /* Modify navbar to be a hamburger menu */
   .navbar__menu {
