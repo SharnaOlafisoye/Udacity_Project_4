@@ -14,6 +14,7 @@ pageHeader.style.top = "0";
 pageHeader.style.width = "100%";
 pageHeader.style.zIndex = "6";
 
+
 //Query for navigation bar list
 // Remove the array brackets, since we only want a single element
 const menuBarList = document.querySelector("#navbar_list");
@@ -33,6 +34,7 @@ sections.forEach((section) => {
   // Remove the dot from the class name, since it's already a class
   aEl.classList.add("menu__link");
   sectionLi.appendChild(aEl);
+  
 });
 
 /**
@@ -45,6 +47,11 @@ sections.forEach((section) => {
  * End Helper Functions
  * Begin Main Functions
  */
+const navbarMenu = document.querySelector('.navbar_menu');
+
+navbarMenu.addEventListener('click', function() {
+  navbarMenu.style.backgroundColor = 'lightyellow';
+});
 
 // Add active class to menu link and corresponding section when near top of viewport
 function setActiveSection() {
@@ -67,7 +74,14 @@ function setActiveSection() {
   });
 }
 
+
 window.addEventListener("scroll", setActiveSection);
+const tester = document.getElementsByClassName("navbar_list");
+// alert
+const mediaQuery = window.matchMedia('(max-width: 768px)')
+if (mediaQuery.matches) {
+  const navBarList = document.getElementById("navbar_list").style.backgroundColor ="grey";
+}
 
 
 
